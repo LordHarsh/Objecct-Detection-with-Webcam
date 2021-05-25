@@ -7,7 +7,7 @@ const closeWebcamButton = document.getElementById('webcamCloseButton');
 const para1 = document.getElementById('p1');
 para2 = document.getElementById('p2');
 
-
+camDirection= 'user';
 
 // Check if webcam access is supported.
 function getUserMediaSupported() {
@@ -30,7 +30,12 @@ function enableCam(event) {
   if (!model) {
     return;
   }
-  
+  if(event.target === flipWebcamButton){
+    if(camDirection === user)
+      camDirection = 'environment'
+    else
+      camDirection = 'user';
+  }
   // Hide the button once clicked.
   p1.classList.add('removed');
   p2.classList.add('removed');
@@ -41,7 +46,7 @@ function enableCam(event) {
   // getUsermedia parameters to force video but not audio.
   const constraints = {
     video: true,
-    facingMode: {exact : 'user'}
+    facingMode: {exact : camDirection}
   };
 
   // Activate the webcam stream.
@@ -50,6 +55,8 @@ function enableCam(event) {
     video.addEventListener('loadeddata', predictWebcam);
   });
 }
+
+flipWebcamButton.addEventListener(click, enableCam);
 
 // Store the resulting model in the global scope of our app.
 var model = undefined;
