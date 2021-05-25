@@ -51,8 +51,7 @@ function enableCam(event) {
   closeWebcamButton.classList.add('show')
   // getUsermedia parameters to force video but not audio.
   const constraints = {
-    video: true,
-    facingMode: { exact: camDirection }
+    video: {facingMode: { exact: camDirection }}
   };
 
   // Activate the webcam stream.
