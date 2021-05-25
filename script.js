@@ -7,7 +7,7 @@ const closeWebcamButton = document.getElementById('webcamCloseButton');
 const para1 = document.getElementById('p1');
 para2 = document.getElementById('p2');
 
-camDirection= 'user';
+let camDirection = 'user';
 
 // Check if webcam access is supported.
 function getUserMediaSupported() {
@@ -30,12 +30,13 @@ function enableCam(event) {
   if (!model) {
     return;
   }
-  if(event.target === flipWebcamButton){
-    if(camDirection === user)
+  if (event.target === flipWebcamButton) {
+    if (camDirection === user)
       camDirection = 'environment'
     else
       camDirection = 'user';
   }
+
   // Hide the button once clicked.
   p1.classList.add('removed');
   p2.classList.add('removed');
@@ -46,11 +47,11 @@ function enableCam(event) {
   // getUsermedia parameters to force video but not audio.
   const constraints = {
     video: true,
-    facingMode: {exact : camDirection}
+    facingMode: { exact: camDirection }
   };
 
   // Activate the webcam stream.
-  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+  navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
     video.srcObject = stream;
     video.addEventListener('loadeddata', predictWebcam);
   });
@@ -59,7 +60,7 @@ function enableCam(event) {
 flipWebcamButton.addEventListener(click, enableCam);
 closeWebcamButton.addEventListener(click, restartPage);
 
-function restartPage(event){
+function restartPage(event) {
   location.reload()
 }
 
@@ -88,26 +89,26 @@ function predictWebcam() {
       liveView.removeChild(children[i]);
     }
     children.splice(0);
-    
+
     // Now lets loop through predictions and draw them to the live view if
     // they have a high confidence score.
     for (let n = 0; n < predictions.length; n++) {
       // If we are over 66% sure we are sure we classified it right, draw it!
       if (predictions[n].score > 0.66) {
         const p = document.createElement('p');
-        p.innerText = predictions[n].class  + ' - with ' 
-            + Math.round(parseFloat(predictions[n].score) * 100) 
-            + '% confidence.';
+        p.innerText = predictions[n].class + ' - with '
+          + Math.round(parseFloat(predictions[n].score) * 100)
+          + '% confidence.';
         p.style = 'margin-left: ' + predictions[n].bbox[0] + 'px; margin-top: '
-            + (predictions[n].bbox[1] - 10) + 'px; width: ' 
-            + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
+          + (predictions[n].bbox[1] - 10) + 'px; width: '
+          + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
 
         const highlighter = document.createElement('div');
         highlighter.setAttribute('class', 'highlighter');
         highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
-            + predictions[n].bbox[1] + 'px; width: ' 
-            + predictions[n].bbox[2] + 'px; height: '
-            + predictions[n].bbox[3] + 'px;';
+          + predictions[n].bbox[1] + 'px; width: '
+          + predictions[n].bbox[2] + 'px; height: '
+          + predictions[n].bbox[3] + 'px;';
 
         liveView.appendChild(highlighter);
         liveView.appendChild(p);
@@ -115,7 +116,7 @@ function predictWebcam() {
         children.push(p);
       }
     }
-    
+
     // Call this function again to keep predicting when the browser is ready.
     window.requestAnimationFrame(predictWebcam);
   });
