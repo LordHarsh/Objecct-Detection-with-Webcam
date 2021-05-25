@@ -57,8 +57,8 @@ function enableCam(event) {
   });
 }
 
-flipWebcamButton.addEventListener(click, enableCam);
-closeWebcamButton.addEventListener(click, restartPage);
+flipWebcamButton.addEventListener('click', enableCam);
+closeWebcamButton.addEventListener('click', restartPage);
 
 function restartPage(event) {
   location.reload()
