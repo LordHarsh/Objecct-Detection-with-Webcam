@@ -36,8 +36,10 @@ function enableCam(event) {
     return;
   }
   if (event.target === flipWebcamButton) {
-    if (camDirection === user)
-      camDirection = 'environment'
+    if (camDirection === 'user'){
+      camDirection = 'environment';
+      console.log('shouls change');
+    }
     else
       camDirection = 'user';
   }
