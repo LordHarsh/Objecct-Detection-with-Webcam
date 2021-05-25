@@ -8,6 +8,10 @@ const para1 = document.getElementById('p1');
 para2 = document.getElementById('p2');
 
 let camDirection = 'user';
+var siteWidth = 1280;
+var scale = screen.width /siteWidth;
+
+document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
 
 // Check if webcam access is supported.
 function getUserMediaSupported() {
