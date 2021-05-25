@@ -24,7 +24,7 @@ header a{
   left: 50px;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: whitesmoke;
-  font-size: 300%;
+  font-size: 5vh;
   font-weight: 400;
   letter-spacing: 0.08em;
 }
@@ -33,7 +33,7 @@ header a{
 /* Main content */
 main {
   padding-left: 12px;
-  margin-top:7%; /* Add a top margin to avoid content overlay */
+  margin-top:30vh; /* Add a top margin to avoid content overlay */
   text-align: center;
   font-size: large;
   align-content: center;
@@ -103,21 +103,23 @@ section {
 }
 
 .button{
-  height: 50px;
+  height:max-content;
+  width: max-content;
   color: #000000;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  border-radius: 12px;
+  border-radius: 3ch;
   left: 50%;
   right: 50%;
   border-collapse: collapse;
-  font-size: 16px;
+  font-size: 3vh;
+  font-weight: bold;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
-  padding: 10px;
+  padding: 1vh;
   transition-duration: 0.4s;
 }
 
 .button:hover {
-  background-color: #000000; /* Green */
+  background-color: #000000;
   color: white;
   box-shadow: 0 6px 10px 0 rgb(231, 231, 231), 0 6px 10px 0 rgb(231, 231, 231);
 }
