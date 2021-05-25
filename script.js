@@ -57,6 +57,12 @@ function enableCam(event) {
 }
 
 flipWebcamButton.addEventListener(click, enableCam);
+closeWebcamButton.addEventListener(click, restartPage);
+
+function restartPage(event){
+  location.reload()
+}
+
 
 // Store the resulting model in the global scope of our app.
 var model = undefined;
