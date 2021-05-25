@@ -1,3 +1,5 @@
+// PC Screen- 864 1536 1.5625
+// iPhone X Screen - 812 375 3.0000001192092896
 const video = document.getElementById('webcam');
 const liveView = document.getElementById('liveView');
 const demosSection = document.getElementById('demos');
@@ -8,10 +10,9 @@ const para1 = document.getElementById('p1');
 para2 = document.getElementById('p2');
 
 let camDirection = 'user';
-var siteWidth = 1280;
-var scale = screen.width /siteWidth;
 
-document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
+console.log(window.screen.availHeight+" "+window.screen.availWidth+' '+window.devicePixelRatio);
+
 
 // Check if webcam access is supported.
 function getUserMediaSupported() {
@@ -100,6 +101,7 @@ function predictWebcam() {
       // If we are over 66% sure we are sure we classified it right, draw it!
       if (predictions[n].score > 0.66) {
         const p = document.createElement('p');
+        p.style = "font-size=2vh"
         p.innerText = predictions[n].class + ' - with '
           + Math.round(parseFloat(predictions[n].score) * 100)
           + '% confidence.';
@@ -113,7 +115,6 @@ function predictWebcam() {
           + predictions[n].bbox[1] + 'px; width: '
           + predictions[n].bbox[2] + 'px; height: '
           + predictions[n].bbox[3] + 'px;';
-
         liveView.appendChild(highlighter);
         liveView.appendChild(p);
         children.push(highlighter);

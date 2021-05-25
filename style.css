@@ -12,7 +12,7 @@ header {
   background-color:black;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  width: 1300px; /* Full width */
   padding: 5px;
   left: 0;
   shape-margin: 5px;
@@ -33,7 +33,7 @@ header a{
 /* Main content */
 main {
   padding-left: 12px;
-  margin-top:30vh; /* Add a top margin to avoid content overlay */
+  margin-top:10vh; /* Add a top margin to avoid content overlay */
   text-align: center;
   font-size: large;
   align-content: center;
@@ -41,7 +41,7 @@ main {
 }
 
 .para{
-  margin-top: 20%;
+  margin-top: 40vh;
 }
 
 body {
@@ -77,11 +77,10 @@ section {
 }
 
 .camView {
+  vertical-align: middle;
   position: relative;
-  float: left;
-  width: calc(100% - 20px);
-  margin: 10px;
   cursor: pointer;
+  align-content: center;
 }
 
 .camView p {
@@ -92,7 +91,7 @@ section {
   border: 1px dashed rgba(255, 255, 255, 0.7);
   z-index: 2;
   font-size: 12px;
-  align-content: space-around;
+  align-content: center;
 }
 
 .highlighter {
@@ -111,7 +110,7 @@ section {
   left: 50%;
   right: 50%;
   border-collapse: collapse;
-  font-size: 3vh;
+  font-size: 1.7vh;
   font-weight: bold;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   padding: 1vh;
